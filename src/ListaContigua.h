@@ -7,7 +7,7 @@ typedef struct {
     int n;
 }ListaContigua;
 
-ListaContigua constructor(ListaContigua lista);
+ListaContigua constructor(ListaContigua *lista);
 
 void destructor(ListaContigua lista);
 
@@ -15,7 +15,7 @@ int isLlena(ListaContigua lista);
 
 int elementoPosicion(ListaContigua lista, int posicion);
 
-void modificarElemento(ListaContigua lista);
+void modificarElemento(ListaContigua lista, int posicion, int nuevoValor);
 
 void ampliarCapacidad(ListaContigua lista, int nuevaCapacidad);
 
