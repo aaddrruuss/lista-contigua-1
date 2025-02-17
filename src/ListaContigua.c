@@ -3,35 +3,72 @@
 #include <math.h>
 #include "ListaContigua.h"
 
-ListaContigua constructor(ListaContigua *lista){
+#define INCREMENTO 2
+
+void constructor(ListaContigua *lista){
     lista->n = 0;
-    lista->array = (int)calloc(lista->n, sizeof(int));
+    lista->array = NULL;
     lista->capacidad = 0;
 }
 
-void destructor(ListaContigua lista){
-    free(lista.array);
+void destructor(ListaContigua *lista){
+    free(lista->array);
+    lista->array = NULL;
+    lista->capacidad = 0,
+    lista->n = 0;    
 }
 
 int isLlena(ListaContigua lista){
-    int elementos = sizeof(lista.array) / sizeof(lista.array[0]);
-    if(elementos == lista.n){
-        return 1;
-    }
-    return 0;
+    return lista.capacidad == lista.n;
 }
 
 int elementoPosicion(ListaContigua lista, int posicion){
-    assert(lista.array != NULL);
+    if(posicion < 0 || posicion >= lista.n){
+        printf("Valor de la posicion no valido\n");
+        return -1;
+    }
     return lista.array[posicion];
 }
 
-void modificarElemento(ListaContigua lista, int posicion, int nuevoValor){
-
+void modificarElemento(ListaContigua *lista, int posicion, int nuevoValor){
+    if(posicion>=0 && posicion<(lista->n)){
+        lista->array[posicion] = nuevoValor;
+        return;
+    }
+    printf("Posicion no valida");
 }
 
-void ampliarCapacidad(ListaContigua lista, int nuevaCapacidad);
+void ampliarCapacidad(ListaContigua *lista, int nuevaCapacidad){
+    if (lista->capacidad + nuevaCapacidad < 0){
+        return;
+    }
+    lista->capacidad += nuevaCapacidad;
+    lista->array = (int*)realloc(lista->array, lista->capacidad * sizeof(int));
+    if (!lista->array){
+        printf("Error al reservar memoria");
+        exit(1);
+    }
+}
 
-void insertarElemento(ListaContigua lista, int elemento);
+void insertarElemento(ListaContigua *lista, int elemento){
+    if(lista->n != lista->capacidad){
+        lista->array[lista->n] = elemento;
+        lista->n++;
+        return;
+    }
+    ampliarCapacidad(lista, INCREMENTO);
+}
 
-void eliminarUltimoElemento(ListaContigua lista);
+void eliminarUltimoElemento(ListaContigua *lista){
+    if(lista->n != 0){
+        lista->n--;
+        return;
+    }
+    if(lista->capacidad - lista->n >= 2*INCREMENTO){
+        ampliarCapacidad(lista, -INCREMENTO);
+        return;
+    }
+
+    printf("La lista esta vacia");
+    return;
+}
