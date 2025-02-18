@@ -12,5 +12,6 @@ int main(){
         imprimirLista(&lista);
     }
     imprimirElementoLista(&lista, 0);
+    imprimirElementoLista(&lista, 11);
     return 0;
 }
