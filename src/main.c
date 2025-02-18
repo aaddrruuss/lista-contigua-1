@@ -6,7 +6,10 @@
 int main(){
     ListaContigua lista;
     constructor(&lista);
-    imprimirLista(lista);
-
+    imprimirLista(&lista);
+    for(int i = 0 ; i < 12 ; i++){
+        insertarElemento(&lista, i);
+        imprimirLista(&lista);
+    }
     return 0;
 }

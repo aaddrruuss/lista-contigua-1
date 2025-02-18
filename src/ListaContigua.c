@@ -57,6 +57,8 @@ void insertarElemento(ListaContigua *lista, int elemento){
         return;
     }
     ampliarCapacidad(lista, INCREMENTO);
+    lista->array[lista->n] = elemento;
+    lista->n++;
 }
 
 void eliminarUltimoElemento(ListaContigua *lista){
