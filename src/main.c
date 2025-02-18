@@ -32,7 +32,6 @@ int main(){
         imprimirLista(lista);
     }
     
-
     for(int i = 100; i < 104; i++){
         printf("Insertamos %d al final. Nueva ListaContigua:\n", i);
         insertarElemento(&lista, i);
