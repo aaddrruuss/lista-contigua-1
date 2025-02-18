@@ -12,3 +12,7 @@ void imprimirLista(ListaContigua *lista){
     }
     printf("\n");
 }
+
+void imprimirElementoLista(ListaContigua *lista, int elemento){
+    printf("Elemento %d = %d", elemento, lista->array[elemento]);
+}

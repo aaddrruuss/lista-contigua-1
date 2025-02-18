@@ -11,5 +11,6 @@ int main(){
         insertarElemento(&lista, i);
         imprimirLista(&lista);
     }
+    imprimirElementoLista(&lista, 0);
     return 0;
 }
