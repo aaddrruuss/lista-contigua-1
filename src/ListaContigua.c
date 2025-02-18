@@ -66,10 +66,11 @@ void eliminarUltimoElemento(ListaContigua *lista){
         printf("La lista esta vacia");
         return;
     }
-    if(lista->capacidad - lista->n >= 2*INCREMENTO){
+
+    lista->n--;
+
+    if((lista->capacidad - lista->n) >= 2*INCREMENTO){
         ampliarCapacidad(lista, -INCREMENTO);
         return;
     }
-    lista->n--;
-    
 }
