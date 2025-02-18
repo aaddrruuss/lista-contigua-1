@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "imprimirLista.h"
 
 void imprimirLista(ListaContigua lista){
