@@ -60,15 +60,14 @@ void insertarElemento(ListaContigua *lista, int elemento){
 }
 
 void eliminarUltimoElemento(ListaContigua *lista){
-    if(lista->n != 0){
-        lista->n--;
+    if(lista->n == 0){
+        printf("La lista esta vacia");
         return;
     }
     if(lista->capacidad - lista->n >= 2*INCREMENTO){
         ampliarCapacidad(lista, -INCREMENTO);
         return;
     }
-
-    printf("La lista esta vacia");
-    return;
+    lista->n--;
+    
 }
